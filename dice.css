@@ -1,22 +1,24 @@
-@keyframes roll {
-  10% {
-    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-  }
-  30% {
-    transform: rotateX(120deg) rotateY(240deg) rotateZ(0deg) translateX(40px) translateY(40px);
-  }
-  50% {
-    transform: rotateX(240deg) rotateY(480deg) rotateZ(0deg) translateX(-40px) translateY(-40px);
-  }
-  70% {
-    transform: rotateX(360deg) rotateY(720deg) rotateZ(0deg);
-  }
-  90% {
-    transform: rotateX(480deg) rotateY(960deg) rotateZ(0deg);
+/* Sur les écrans, quand la largeur de la fenêtre fait au maximum 1280px */
+@media screen and (max-width: 1280px) {
+  body {
+    zoom: 1
   }
 }
+/* Sur tous types d'écran, quand la largeur de la fenêtre est comprise entre 1024px et 1280px */
+@media all and (min-width: 1280px) and (max-width: 3280px) {
+  body {
+    zoom: 1.5
+  }
+}
+/* Sur tous types d'écrans orientés horizontalement */
+@media all and (orientation: landscape) {
+  body {
+    zoom: 1
+  }
+}
+
 body {
-  background: #333;
+  background: #222;
   padding: 20px;
 }
 .content {
@@ -34,6 +36,94 @@ body {
   transition: transform 0.5s ease-out;
   cursor: pointer;
   transform: rotateX(-53deg);
+}
+.die .face {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  margin: 0 -50px;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 86px solid rgba(148, 45, 232, 0.75);
+  width: 0px;
+  height: 0px;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  counter-increment: steps 1;
+}
+.die .face:before {
+  content: counter(steps);
+  position: absolute;
+  top: 21.5px;
+  left: -100px;
+  color: #fff;
+  text-shadow: 1px 1px 3px #000;
+  font-size: 43px;
+  text-align: center;
+  line-height: 77.4px;
+  width: 200px;
+  height: 86px;
+}
+h1 {
+  color: #fafafa;
+  text-align: center;
+  margin-bottom: 40px;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: none;
+}
+ul > li {
+  display: inline-block;
+  margin: 10px 10px;
+}
+.button {
+  width: 80px;
+  padding: 0;
+  margin: 10px auto;
+}
+a {
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: bold;
+  padding: 5px 15px;
+  width: 40px;
+  display: inline-block;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  background-color: #999;
+}
+a.active {
+  background-color: #333;
+}
+a:hover {
+  background-color: #666;
+}
+a.randomize {
+  width: 50px;
+  margin: 50px 0;
+}
+
+@keyframes roll {
+  10% {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+  30% {
+    transform: rotateX(120deg) rotateY(240deg) rotateZ(0deg) translateX(40px) translateY(40px);
+  }
+  50% {
+    transform: rotateX(240deg) rotateY(480deg) rotateZ(0deg) translateX(-40px) translateY(-40px);
+  }
+  70% {
+    transform: rotateX(360deg) rotateY(720deg) rotateZ(0deg);
+  }
+  90% {
+    transform: rotateX(480deg) rotateY(960deg) rotateZ(0deg);
+  }
 }
 .die.rolling {
   animation: roll 3s linear;
@@ -98,33 +188,6 @@ body {
 .die[data-face="15"] {
   transform: rotateX(11deg) rotateY(-540deg);
 }
-.die .face {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  margin: 0 -50px;
-  border-left: 50px solid transparent;
-  border-right: 50px solid transparent;
-  border-bottom: 86px solid rgba(151, 23, 255, 0.75);
-  width: 0px;
-  height: 0px;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-  counter-increment: steps 1;
-}
-.die .face:before {
-  content: counter(steps);
-  position: absolute;
-  top: 21.5px;
-  left: -100px;
-  color: #fff;
-  text-shadow: 1px 1px 3px #000;
-  font-size: 43px;
-  text-align: center;
-  line-height: 77.4px;
-  width: 200px;
-  height: 86px;
-}
 .die .face:nth-child(1) {
   transform: rotateY(0deg) translateZ(33.5px) translateY(-12.9px) rotateX(53deg);
 }
@@ -184,47 +247,4 @@ body {
 }
 .die .face:nth-child(15) {
   transform: rotateY(540deg) translateZ(75px) translateY(54.18px) rotateX(-11deg);
-}
-h2 {
-  color: #fafafa;
-  text-align: center;
-  margin-bottom: 30px;
-}
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: none;
-}
-ul > li {
-  display: inline-block;
-  margin: 10px 10px;
-}
-.button {
-  width: 80px;
-  padding: 0;
-  margin: 50px auto;
-}
-a {
-  text-align: center;
-  color: #fff;
-  text-decoration: none;
-  font-size: 25px;
-  font-weight: bold;
-  padding: 5px 15px;
-  width: 40px;
-  display: inline-block;
-  border: 1px solid #dcdcdc;
-  border-radius: 4px;
-  background-color: #999;
-}
-a.active {
-  background-color: #333;
-}
-a:hover {
-  background-color: #666;
-}
-a.randomize {
-  width: 50px;
-  margin: 50px 0;
 }
