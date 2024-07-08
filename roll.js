@@ -1,25 +1,25 @@
-var $die = $('.die'),
-    sides = 20,
-    initialSide = 1,
-    lastFace,
-    timeoutId,
-    transitionDuration = 500, 
-    animationDuration  = 1500
+const $die = $('.die')
+const sides = 20
+const initialSide = 1
+const transitionDuration = 500
+const animationDuration  = 1500
+let lastFace = undefined
+let timeoutId = undefined
 
-$('ul > li > a').click(function () {
+$('ul > li > a').click(() => {
   reset()
   rollTo($(this).attr('href'))
   
   return false
 })
 
-function randomFace() {
-  var face = Math.floor((Math.random() * sides)) + initialSide
+const randomFace = () => {
+  const face = Math.floor((Math.random() * sides)) + initialSide
   lastFace = face == lastFace ? randomFace() : face
   return face;
 }
 
-function rollTo(face) {
+const rollTo = (face) => {
   clearTimeout(timeoutId)
   
   $('ul > li > a').removeClass('active')
@@ -28,15 +28,15 @@ function rollTo(face) {
   $die.attr('data-face', face)
 }
 
-function reset() {
+const reset = () => {
   $die.attr('data-face', null).removeClass('rolling')
 }
 
-$('.randomize, .die').click(function () {
+$('.randomize, .die').click(() => {
   $die.addClass('rolling')
   clearTimeout(timeoutId)
   
-  timeoutId = setTimeout(function () {
+  timeoutId = setTimeout(() => {
     $die.removeClass('rolling')
     
     rollTo(randomFace())
