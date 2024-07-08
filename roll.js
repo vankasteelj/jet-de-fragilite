@@ -6,13 +6,6 @@ const animationDuration  = 1500
 let lastFace = undefined
 let timeoutId = undefined
 
-$('ul > li > a').click(() => {
-  reset()
-  rollTo($(this).attr('href'))
-  
-  return false
-})
-
 const randomFace = () => {
   const face = Math.floor((Math.random() * sides)) + initialSide
   lastFace = face == lastFace ? randomFace() : face
@@ -21,10 +14,6 @@ const randomFace = () => {
 
 const rollTo = (face) => {
   clearTimeout(timeoutId)
-  
-  $('ul > li > a').removeClass('active')
-  $('[href=' + face + ']').addClass('active')
-  
   $die.attr('data-face', face)
 }
 
