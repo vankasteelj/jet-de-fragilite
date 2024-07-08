@@ -223,3 +223,6 @@ a.randomize {
 .die .face:nth-child(15) {
   transform: rotateY(540deg) translateZ(75px) translateY(54.18px) rotateX(-11deg);
 }
+* {
+  -webkit-tap-highlight-color: transparent;
+}
