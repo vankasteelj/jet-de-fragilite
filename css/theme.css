@@ -1,0 +1,16 @@
+:root {
+  --dice-color: rgba(148, 45, 232, 0.75);
+  --dice-text: #fefefe;
+
+  --app-background: #2a2a2a;
+  --text-color: #fefefe;
+  --text-color-dimmed: #e2e2e2;
+
+  --button-text: #fefefe;
+  --button-color: #777;
+  --button-color-hover: #666;
+  --button-color-active: #333;
+  --button-border: #dcdcdc;
+
+  --credits: #a0a0a0;
+}

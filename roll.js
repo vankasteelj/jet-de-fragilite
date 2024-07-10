@@ -15,7 +15,7 @@ const actions = {
     "Tape de rage contre un mur et pète toi la main",
     "Retiens une larme... Craque. Chiale. Le monde est injuste avec toi",
     "Fais des pompes et des tractions pour passer la frustration (et fais-toi mal)",
-    "Serre les poings, regarde en l'air, prends une grande inspiration par le nez et dis : \"T'as raison\"",
+    "Serre les poings, regarde en l'air, prends une grande inspiration par le nez et dis : \"T'as raison !\"",
     "Vexé, tu essayes de t'en sortir avec les leçons de vie de Jordan Peterson",
     "Accepte la contradiction mais passe ta colère sur le premier truc vulnérable à portée"
   ],
@@ -27,7 +27,6 @@ const actions = {
     "\"Oui mais les hommes souffrent aussi et ça on n'en parle jamais, OK?\"",
     "Joue la victime",
     "\"On en parlera quand il s'agira de porter des trucs lourds\"",
-    "\"Je ne pleure pas, je sue de la colère par les yeux\"",
     "\"Non mais je le savais déjà\"",
     "\"Non mais c'est bon, j'avais compris\"",
     "Oublie instantanément le mode d'emploi de tous les appareils ménagers et n'essaye surtout pas de comprendre comment ils fonctionnent"
@@ -42,23 +41,27 @@ const actions = {
   ],
   success: [
     "Réussite",
+    "\"Arrête d'être en colère, sois rationnelle un peu !\"",
     "\"T'as tes règles ou quoi ?\"",
     "\"Je suis désolé que tu n'aies pas compris ce que j'ai voulu dire\"",
     "\"Je ne pleure pas, je sue de la colère par les yeux\"",
     "Ignore la personne en faisant mine de tâter un mur, avant de sortir : \"C'est un mur porteur ça, non ?\"",
-    "Interdiction de te soigner si tu ressens de la douleur. D'ailleurs, tu n'en ressens pas"
+    "Interdiction de te soigner si tu ressens de la douleur. D'ailleurs, tu n'en ressens pas", 
+    "\"Je suis un homme, c'est normal que je sois en colère\"",
+    "\"J'ai eu une mauvaise journée au travail, tu peux comprendre ?\""
   ],
   csuccess: [
     "Réussite critique",
-    "Excuse-toi, puis ajoute un 'mais'... et déroule à nouveau ton point de vue problématique",
-    "\"Non t’as pas bien compris, je vais répéter en PARLANT PLUS FORT\""
+    "Excuse-toi, puis ajoute un \"mais\"... et déroule à nouveau ton point de vue problématique",
+    "\"Non t’as pas bien compris, je vais répéter en PARLANT PLUS FORT\"",
+    "\"Désolé que tu le prennes comme ça\""
   ]
 }
 
 const randomFace = () => {
   const face = Math.floor((Math.random() * sides)) + initialSide
   lastFace = face == lastFace ? randomFace() : face
-  return face;
+  return lastFace;
 }
 
 const randomAction = (face) => {
@@ -72,8 +75,8 @@ const randomAction = (face) => {
   const i = actions[range].length - 1
   const rand = Math.floor((Math.random() * i)) + 1
   lastAction = rand == lastAction ? randomAction(face) : rand
-  console.log('Jet de dé: la face %s est un(e) %s - La phrase %s est: %s', face, actions[range][0], rand, actions[range][rand])
-  return actions[range][rand]
+  console.log('Jet de dé: la face %s est un(e) %s - La phrase %s est: %s', face, actions[range][0], rand, actions[range][lastAction])
+  return actions[range][lastAction]
 }
 
 const rollTo = (face) => {
@@ -82,16 +85,18 @@ const rollTo = (face) => {
 }
 
 $('.randomize, .die').click(() => {
-  $action.removeClass('active')
+  $action.fadeOut()
   $die.addClass('rolling')
   clearTimeout(timeoutId)
   
   const roll = randomFace()
-  $action.text(randomAction(roll))
+  setTimeout(() => {
+    $action.text(randomAction(roll))
+  }, 500)
 
   timeoutId = setTimeout(() => {
     $die.removeClass('rolling')
-    $action.addClass('active')
+    $action.fadeIn()
     $button.text('Relancer')
 
     rollTo(roll)
