@@ -96,8 +96,10 @@ $('.randomize, .die').click(() => {
 
   timeoutId = setTimeout(() => {
     $die.removeClass('rolling')
-    $action.fadeIn()
     $button.text('Relancer')
+    setTimeout(() => {
+      $action.fadeIn()
+    }, 300)
 
     rollTo(roll)
   }, animationDuration)
