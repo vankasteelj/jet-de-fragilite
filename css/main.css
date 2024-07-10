@@ -63,21 +63,22 @@ h1 {
 }
 .button a.randomize {
   width: 110px;
-  margin-top: 50px;
+  margin-top: 45px;
 }
 .result {
   width: 280px;
-  height: 130px;
+  height: 140px;
   padding: 0;
   margin: 0 auto;
 }
 .result .reaction {
-  padding: 10px;
   text-align: center;
   color: var(--text-color);
   font-size: 1.3em;
   display: none;
   animation: all .5s;
+  height: 140px;
+  overflow: scroll;
 }
 .credits a {
   color: var(--credits);
