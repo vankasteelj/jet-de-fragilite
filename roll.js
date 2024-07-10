@@ -57,15 +57,15 @@ const randomFace = () => {
 
 const randomAction = (face) => {
   const range = (() => {
-    if (face === 1) return 'cfail'
+    if (face <= 2) return 'cfail'
     if (face <= 10) return 'fail'
     if (face <= 15) return 'mid'
-    if (face <= 19) return 'success'
-    if (face === 20) return 'csuccess'
+    if (face <= 18) return 'success'
+    if (face <= 20) return 'csuccess'
   })()
   const i = actions[range].length
   const rand = Math.floor((Math.random() * i)) + 1
-  lastAction = rand == lastAction ? randomAction() : rand
+  lastAction = rand == lastAction ? randomAction(face) : rand
   return actions[range][rand]
 }
 
