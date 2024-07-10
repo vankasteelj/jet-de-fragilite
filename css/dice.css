@@ -182,3 +182,31 @@
 .die .face:nth-child(15) {
   transform: rotateY(540deg) translateZ(75px) translateY(54.18px) rotateX(-11deg);
 }
+.content:after {
+  position: absolute;
+  content: "";
+  top: 3vw;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.65);
+  filter: blur(10vw);
+  background: linear-gradient(270deg, var(--dice-glow-1), var(--dice-glow-2));
+  background-size: auto;
+  background-size: 200% 200%;
+  animation: animateGlow 10s ease infinite;
+}
+@keyframes animateGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

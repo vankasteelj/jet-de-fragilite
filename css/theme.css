@@ -1,16 +1,18 @@
 :root {
-  --dice-color: rgba(148, 45, 232, 0.75);
+  --dice-color: rgba(148, 45, 232, 0.5);
   --dice-text: #fefefe;
+  --dice-glow-1: rgba(15, 255, 193, .4);
+  --dice-glow-2: rgba(126, 15, 255, .4);
 
   --app-background: #2a2a2a;
   --text-color: #fefefe;
   --text-color-dimmed: #e2e2e2;
 
   --description-text: #e2e2e2;
-  --description-background: rgba(100, 100, 100, 0.30);
+  --description-background: #333;
 
   --button-text: #fefefe;
-  --button-color: rgba(100, 100, 100, 0.30);
+  --button-color: #333;
   --button-color-hover: #666;
   --button-color-active: #333;
   --button-border: #666;

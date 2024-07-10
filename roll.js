@@ -70,6 +70,9 @@ const randomAction = (face, reroll) => {
   const i = actions[range].length - 1
   const rand = Math.floor((Math.random() * i)) + 1
   console.log('Résultat: %s - %s (action %s: %s)', face, actions[range][0].toLowerCase(), rand, actions[range][rand])
+  setTimeout(() => {
+    $('.resultPopup').text(actions[range][0]).fadeIn(100).delay(600).fadeOut(1000)
+  }, 200)
   return actions[range][rand]
 }
 
