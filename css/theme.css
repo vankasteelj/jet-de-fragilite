@@ -6,11 +6,14 @@
   --text-color: #fefefe;
   --text-color-dimmed: #e2e2e2;
 
+  --description-text: #e2e2e2;
+  --description-background: rgba(100, 100, 100, 0.30);
+
   --button-text: #fefefe;
-  --button-color: #777;
+  --button-color: rgba(100, 100, 100, 0.30);
   --button-color-hover: #666;
   --button-color-active: #333;
-  --button-border: #dcdcdc;
+  --button-border: #666;
 
   --credits: #a0a0a0;
 }

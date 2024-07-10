@@ -13,17 +13,25 @@ body {
 }
 h1 {
   color: var(--text-color);
+  font-family: "Indie Flower", system-ui, Arial, sans-serif;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   margin-top: 20px;
   padding-top: 0;
+  font-size: 2.5em;
 }
 .description {
-  width: 280px;
+  width: 250px;
   text-align: center;
-  color: var(--text-color-dimmed);
+  color: var(--description-text);
   margin: 0 auto;
   margin-bottom: 30px;
+  background: var(--description-background);
+  border-radius: 10px;
+  padding: 5px;
+  font-size: 1em;
+  font-weight: lighter;
+  box-shadow: 5px 3px 100px rgba(0, 0 , 0, 0.10);
 }
 .button {
   width: 140px;
@@ -59,7 +67,7 @@ h1 {
 }
 .result {
   width: 280px;
-  height: 100px;
+  height: 130px;
   padding: 0;
   margin: 0 auto;
 }
