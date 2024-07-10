@@ -103,6 +103,6 @@ h1 {
   height: 100px;
   margin-top: -210px;
   display: none;
-  /*text-shadow: 10px 10px 10px black;
-  -webkit-text-stroke: 1px black;*/
+  text-shadow: 3px 3px 15px black;
+  /*-webkit-text-stroke: 1px black;*/
 }
