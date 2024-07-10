@@ -5,6 +5,7 @@ const initialSide = 1
 const transitionDuration = 500
 const animationDuration  = 1500
 let lastFace = undefined
+let lastAction = undefined
 let timeoutId = undefined
 
 const actions = {
@@ -40,7 +41,7 @@ const actions = {
     "\"Je suis désolé que tu n'aies pas compris ce que j'ai voulu dire\"",
     "\"Je ne pleure pas, je sue de la colère par les yeux\"",
     "Ignore la personne en faisant mine de tâter un mur, avant de sortir : \"C'est un mur porteur ça, non ?\"",
-    "Interdiction de te soigner si tu ressents de la douleur. D'ailleurs, tu n'en ressents pas"
+    "Interdiction de te soigner si tu ressens de la douleur. D'ailleurs, tu n'en ressens pas"
   ],
   csuccess: [
     "Excuse-toi, puis ajoute un 'mais'... et déroule à nouveau ton point de vue problématique",
@@ -64,6 +65,7 @@ const randomAction = (face) => {
   })()
   const i = actions[range].length
   const rand = Math.floor((Math.random() * i)) + 1
+  lastAction = rand == lastAction ? randomAction() : rand
   return actions[range][rand]
 }
 
