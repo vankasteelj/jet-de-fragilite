@@ -1,5 +1,6 @@
 const $die = $('.die')
 const $action = $('.result .reaction')
+const $button = $('.button .randomize')
 const sides = 20
 const initialSide = 1
 const transitionDuration = 500
@@ -10,6 +11,7 @@ let timeoutId = undefined
 
 const actions = {
   cfail: [
+    "Échec critique",
     "Tape de rage contre un mur et pète toi la main",
     "Retiens une larme... Craque. Chiale. Le monde est injuste avec toi",
     "Fais des pompes et des tractions pour passer la frustration (et fais-toi mal)",
@@ -18,6 +20,7 @@ const actions = {
     "Accepte la contradiction mais passe ta colère sur le premier truc vulnérable à portée"
   ],
   fail: [
+    "Échec",
     "N'exprime pas ta colère par des mots mais par des soupirs et des râles réguliers de cachalot en rut",
     "Quitte la pièce en claquant la porte",
     "Tu sais que tu as tort. Continue à hurler, admet que tu as tort, puis remets-toi à hurler",
@@ -30,6 +33,7 @@ const actions = {
     "Oublie instantanément le mode d'emploi de tous les appareils ménagers et n'essaye surtout pas de comprendre comment ils fonctionnent"
   ],
   mid: [
+    "Réussite moyenne",
     "Accuse l'autre d'être désagréable",
     "\"Je ne comprends pas, je suis un mec bien\"",
     "\"C’est bien un truc de gonzesse, ça\"",
@@ -37,6 +41,7 @@ const actions = {
     "\"On ne peut plus rien dire\""
   ],
   success: [
+    "Réussite",
     "\"T'as tes règles ou quoi ?\"",
     "\"Je suis désolé que tu n'aies pas compris ce que j'ai voulu dire\"",
     "\"Je ne pleure pas, je sue de la colère par les yeux\"",
@@ -44,6 +49,7 @@ const actions = {
     "Interdiction de te soigner si tu ressens de la douleur. D'ailleurs, tu n'en ressens pas"
   ],
   csuccess: [
+    "Réussite critique",
     "Excuse-toi, puis ajoute un 'mais'... et déroule à nouveau ton point de vue problématique",
     "\"Non t’as pas bien compris, je vais répéter en PARLANT PLUS FORT\""
   ]
@@ -58,24 +64,21 @@ const randomFace = () => {
 const randomAction = (face) => {
   const range = (() => {
     if (face <= 2) return 'cfail'
-    if (face <= 10) return 'fail'
+    if (face <= 9) return 'fail'
     if (face <= 15) return 'mid'
     if (face <= 18) return 'success'
     if (face <= 20) return 'csuccess'
   })()
-  const i = actions[range].length
+  const i = actions[range].length - 1
   const rand = Math.floor((Math.random() * i)) + 1
   lastAction = rand == lastAction ? randomAction(face) : rand
+  console.log('Jet de dé: la face %s est un(e) %s - La phrase %s est: %s', face, actions[range][0], rand, actions[range][rand])
   return actions[range][rand]
 }
 
 const rollTo = (face) => {
   clearTimeout(timeoutId)
   $die.attr('data-face', face)
-}
-
-const reset = () => {
-  $die.attr('data-face', null).removeClass('rolling')
 }
 
 $('.randomize, .die').click(() => {
@@ -89,6 +92,8 @@ $('.randomize, .die').click(() => {
   timeoutId = setTimeout(() => {
     $die.removeClass('rolling')
     $action.addClass('active')
+    $button.text('Relancer')
+
     rollTo(roll)
   }, animationDuration)
   
