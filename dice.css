@@ -32,11 +32,10 @@ h1 {
   margin: 0 auto;
 }
 .result .reaction {
-  padding: 8px;
-  margin: 0;
+  padding: 10px;
   text-align: center;
   color: #fefefe;
-  font-size: 1.2em;
+  font-size: 1.3em;
   opacity: 0;
   animation: all .5s;
 }
