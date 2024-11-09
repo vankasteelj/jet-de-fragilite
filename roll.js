@@ -99,3 +99,7 @@ $('.randomize, .die').click(() => {
   
   return false
 })
+
+if (navigator.userAgent.indexOf('Android') !== -1) {
+  $('#androidApk').show()
+}
